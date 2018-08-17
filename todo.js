@@ -1,6 +1,7 @@
 var ul = document.querySelector('#todoslist'),
     addButton = document.getElementById('add'),
     item = document.querySelector('#item');
+    
 var itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
 localStorage.setItem('items', JSON.stringify(itemsArray));
@@ -11,16 +12,45 @@ var data = JSON.parse(localStorage.getItem('items'));
 var ConstructList = (text) => {
     let list = document.createElement('li');
     list.textContent = text;
-    list.id = `list_ ${Date.now().toString()}`;
+    list.id = `${Math.round(Math.random()*100)}`;
    // ul.appendChild(list);
-    var removeButton = document.createElement('button');
+   var removeButton = document.createElement('button');
     removeButton.appendChild(document.createTextNode("X"));
     // removeButton.setAttribute('onClick','removeName('+i+')');
     list.appendChild(removeButton);
     ul.appendChild(list);
 }
-	
-// varv  timeStamp = Math.floor(Date.now());
+
+/**
+ * this 
+ * @param {string} taskObj - the task text to be added { text: "sadrfgdsg", id: "asdasf"}
+ */
+function addItem(taskObj){
+    //add loguic
+}
+
+/**
+ * descriptionds efgdfgdf
+ * @param {object} taskObj - { text: "asfadsgs", id: "safsadfs+0" }
+ */ 
+function updateItem(taskObj){
+    //update logic
+}
+
+/**
+ * sandasjfnb
+ * @param {object} taskObj 
+ */
+function removeItem(taskObj){
+    //remove logic
+    taskObj["id"] = "tim";
+    return taskObj
+}
+
+
+
+//return an object and recieve and object (roro)
+
 addButton.onclick = () => {
     // e.preventDefault();
     if(item.value.length>0){
@@ -38,9 +68,11 @@ addButton.onclick = () => {
       return false;
     }
     
-  };
+};
 
 //This will display all existing stored information on the front end every time we open the app.
 data.forEach(item => {
     ConstructList(item.text);
 });
+
+ 
